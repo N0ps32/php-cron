@@ -1,0 +1,34 @@
+(?(DEFINE)(?'min'[1-5]\d))
+(?(DEFINE)(?'mon'(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|[1-9])))
+(?(DEFINE)(?'day'(?:[0-6]|MON|TUE|WED|THU|FRI|SAT|SUN)))
+
+^\s? #lines can start with whitespace
+  (?P<minutes>
+    \*|
+    ((\d|(?&min))(-(\d|(?&min)))?)
+    (,((\d|(?&min))(-(\d|(?&min)))?))*
+  )\s #minutes 0-59
+  (?P<hours>
+    \*|
+    ((\d|1\d|2[0-3])(-(\d|1\d|2[0-3]))?)
+    (,((\d|1\d|2[0-3])(-(\d|1\d|2[0-3]))?))*
+  )\s #hours 0-23
+  (?P<days>
+    \*|
+    (([1-9]|1\d|2\d|3[0-1])(-([1-9]|1\d|2\d|3[0-1]))?)
+    (,(([1-9]|1\d|2\d|3[0-1])(-([1-9]|1\d|2\d|3[0-1]))?))*
+  )\s #days 1-31
+  (?P<months>
+    \*|
+    (?:((?&mon)|1[1-2])(-((?&mon)|1[1-2]))?)
+    ((,(?:((?&mon)|1[1-2])(-((?&mon)|1[1-2]))?))*)
+  )\s #months 1–12 or JAN–DEC
+  (?P<dayOfWeek>
+    \*|
+    ((?&day)(-(?&day))?)
+    ((,((?&day)(-(?&day))?))*)
+  )\s #day of week 0–6 or MON–SUN
+  (?P<command>
+    .*
+  )
+$

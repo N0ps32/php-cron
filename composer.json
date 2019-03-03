@@ -1,0 +1,26 @@
+{
+  "name": "raeder/php-cron",
+  "description": "Advanced PHP cron scheduler that supports web-hooks and programmatic execution",
+  "version": "1.1.0",
+  "keywords": [
+    "cron",
+    "cron-job",
+    "webhook"
+  ],
+  "support": {
+    "docs": "https://github.com/N0ps32/php-cron/blob/master/README.md",
+    "issues": "https://github.com/N0ps32/php-cron/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Benjamin Räder",
+      "homepage": "https://www.raeder.technology/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Dev\\Raeder\\Cron\\": "src/"
+    }
+  }
+}
