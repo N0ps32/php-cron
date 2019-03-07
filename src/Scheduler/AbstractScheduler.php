@@ -34,7 +34,9 @@ abstract class AbstractScheduler implements SchedulerInterface
             $this->parser = new CrontabParser();
         }
 
-        $this->parser->parseCrontab($crontab);
+        $jobs = $this->parser->parseCrontab($crontab);
+        var_dump($jobs);
+        die;
     }
 
 }
