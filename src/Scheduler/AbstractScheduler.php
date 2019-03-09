@@ -4,6 +4,7 @@ namespace Dev\Raeder\Cron\Scheduler;
 
 use Dev\Raeder\Cron\CronExecutionResult;
 use Dev\Raeder\Cron\Parser\CrontabParser;
+use Dev\Raeder\Cron\ScheduleVerification\ScheduleVerificationInterface;
 
 abstract class AbstractScheduler implements SchedulerInterface
 {
@@ -11,6 +12,17 @@ abstract class AbstractScheduler implements SchedulerInterface
     protected $jobs = [];
 
     protected $parser;
+
+    protected $verifier;
+
+    /**
+     * AbstractScheduler constructor.
+     * @param $verifier
+     */
+    public function __construct(ScheduleVerificationInterface $verifier)
+    {
+        $this->verifier = $verifier;
+    }
 
     /**
      * {@inheritdoc}

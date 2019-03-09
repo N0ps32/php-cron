@@ -6,9 +6,16 @@ use Dev\Raeder\Cron\CronExecutionResult;
 use Dev\Raeder\Cron\CronJob;
 use Dev\Raeder\Cron\Exception\CronExecutionException;
 use Dev\Raeder\Cron\Exception\CronParseException;
+use Dev\Raeder\Cron\ScheduleVerification\ScheduleVerificationInterface;
 
 interface SchedulerInterface
 {
+
+    /**
+     * SchedulerInterface constructor.
+     * @param ScheduleVerificationInterface $verifier
+     */
+    public function __construct(ScheduleVerificationInterface $verifier);
 
     /**
      * @param array $metadata
